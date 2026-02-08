@@ -1,45 +1,53 @@
-# TODO Task Tracking App
+# Codex Agent Sandbox
 
-A lightweight command‑line application for tracking TODO items. It supports creating,
-listing, completing, and deleting tasks while persisting them to a simple JSON file.
+This repository is a **fully‑functional agent sandbox** powered by Codex CLI.  It demonstrates how to build, run, and test small self‑contained “agents” that can interact with the host system, access files, run commands, and maintain state across sessions.
 
-## Features
-- Add new tasks with an optional description
-- List all tasks with status (pending/completed)
-- Mark tasks as completed
-- Delete tasks
-- Persist tasks between runs
+## Why an Agent Sandbox?
 
-## Installation
+* **Rapid prototyping** – Quickly spin up a sandboxed environment for your agents without touching the host machine.
+* **Safe experimentation** – Agents run in an isolated workspace with sandboxed permissions, so you can test malicious‑looking code safely.
+* **Integrated tooling** – The sandbox comes with an in‑repo README, a basic `todo` command‑line app, and optional skills you can drop in.
+
+## Repository Layout
+
+```
+├── README.md          ← This file
+├── index.html         ← Optional demo page
+├── todo.py            ← Simple TODO CLI application
+├── requirements.txt   ← Python dependencies
+├── .codex/            ← Codex CLI configuration & skills
+└── ...                ← Other assets
+```
+
+Feel free to modify or extend the `todo.py` script, or add new agents under `.codex/agents`.  All changes are automatically picked up by the sandbox runtime.
+
+## Quick Start
+
 ```bash
-# Clone the repository
-git clone <repo_url>
-cd repo
+# Clone the repo (or use the sandbox directly in your terminal)
+git clone https://github.com/your-org/agent-sandbox.git
+cd agent-sandbox
 
-# Install dependencies (if any)
+# Install the Python dependencies
 pip install -r requirements.txt
 
-# Run the application
-python todo.py
-```
-
-## Usage
-```bash
-# Add a new task
-python todo.py add "Buy milk"
-
-# List all tasks
+# Run the example TODO app
 python todo.py list
-
-# Complete a task (by its ID)
-python todo.py complete 1
-
-# Delete a task
-python todo.py delete 2
 ```
+
+The sandbox also supports running commands inside the agent runtime:
+
+```bash
+codex-cli exec "python todo.py add \"Finish the report\""
+```
+
+See the `index.html` for a lightweight UI demo of the TODO app.
 
 ## Contributing
-Feel free to submit pull requests or open issues for improvements.
+
+Open a pull request or issue any time you want to add new agent examples, improve the sandbox, or extend the tooling.
 
 ## License
-MIT © Your Name
+
+MIT © Codex Team
+
